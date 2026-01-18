@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:agastya-mittal.com)",
+      "WebFetch(domain:www.linkedin.com)",
+      "WebFetch(domain:mihirgoyal-gc.github.io)",
+      "Skill(frontend-design)",
+      "Bash(open:*)",
+      "WebFetch(domain:li2025.org)",
+      "WebFetch(domain:lichange-dot-yamm-track.appspot.com)",
+      "WebFetch(domain:drive.google.com)",
+      "Bash(git init:*)",
+      "Bash(gh repo create:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ]
+  }
+}

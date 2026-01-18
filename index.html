@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mihir Goyal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy-deep: #0a1628;
+            --navy-mid: #1e3a5f;
+            --navy-light: #2d4a6f;
+            --cyan-accent: #00d4ff;
+            --cyan-glow: rgba(0, 212, 255, 0.15);
+            --cream: #f8fafc;
+            --cream-dark: #e2e8f0;
+            --text-muted: #64748b;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--cream);
+            color: var(--navy-deep);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(248, 250, 252, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(30, 58, 95, 0.08);
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--navy-deep);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--navy-deep);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 8rem 4rem 4rem;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-mid) 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            padding-right: 4rem;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--cyan-accent);
+        }
+
+        .hero-name {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 8vw, 6rem);
+            font-weight: 600;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            color: var(--navy-deep);
+        }
+
+        .hero-tagline {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--navy-light);
+            margin-bottom: 2rem;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 480px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--navy-deep);
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .hero-cta:hover {
+            background: var(--navy-mid);
+            transform: translateX(5px);
+        }
+
+        .hero-cta svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-cta:hover svg {
+            transform: translateX(4px);
+        }
+
+        .hero-image-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+        }
+
+        .hero-image {
+            width: 380px;
+            height: 480px;
+            object-fit: cover;
+            object-position: top;
+            position: relative;
+            z-index: 2;
+            filter: grayscale(20%);
+            transition: filter 0.5s ease;
+        }
+
+        .hero-image:hover {
+            filter: grayscale(0%);
+        }
+
+        .hero-image-frame {
+            position: absolute;
+            width: 380px;
+            height: 480px;
+            border: 2px solid var(--cyan-accent);
+            top: calc(50% + 20px);
+            left: calc(50% + 20px);
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 3rem;
+            left: 4rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+        }
+
+        .hero-scroll-line {
+            width: 60px;
+            height: 1px;
+            background: var(--navy-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-scroll-line::after {
+            content: '';
+            position: absolute;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--cyan-accent);
+            animation: scrollLine 2s infinite;
+        }
+
+        @keyframes scrollLine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 4rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .section-number {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--cyan-accent);
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: var(--cream-dark);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--cream);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 6rem;
+        }
+
+        .about-text {
+            font-size: 1.25rem;
+            line-height: 2;
+            color: var(--navy-mid);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-highlight {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--navy-deep);
+            border-left: 3px solid var(--cyan-accent);
+            padding-left: 2rem;
+            margin: 2rem 0;
+        }
+
+        .about-languages {
+            padding: 2rem;
+            background: var(--navy-deep);
+            color: var(--cream);
+        }
+
+        .about-languages h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--cyan-accent);
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        .language-level {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* Experience Section */
+        .experience {
+            background: linear-gradient(180deg, var(--cream) 0%, white 100%);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 200px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 180px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--cream-dark);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 2rem 0 3rem 3rem;
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: -200px;
+            width: 160px;
+            text-align: right;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -8px;
+            top: 2.5rem;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--cream);
+            border: 3px solid var(--cyan-accent);
+        }
+
+        .timeline-role {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--navy-deep);
+        }
+
+        .timeline-company {
+            font-size: 1rem;
+            color: var(--navy-mid);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timeline-location {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .timeline-description {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            max-width: 600px;
+        }
+
+        .timeline-description li {
+            margin-bottom: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .timeline-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--cyan-accent);
+            color: var(--navy-deep);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-link:hover {
+            background: var(--navy-deep);
+            color: var(--cream);
+        }
+
+        /* VisionForAll Featured Section */
+        .vision-section {
+            background: var(--navy-deep);
+            color: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vision-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 80%, var(--cyan-glow) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(30, 58, 95, 0.5) 0%, transparent 50%);
+        }
+
+        .vision-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .vision-text h2 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .vision-text h2 span {
+            color: var(--cyan-accent);
+        }
+
+        .vision-text p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+        }
+
+        .vision-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--cyan-accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: gap 0.3s ease;
+        }
+
+        .vision-link:hover {
+            gap: 1.25rem;
+        }
+
+        .vision-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.02);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            border-color: var(--cyan-accent);
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            font-weight: 600;
+            color: var(--cyan-accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Awards Section */
+        .awards {
+            background: white;
+        }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .award-item {
+            padding: 2rem;
+            background: var(--cream);
+            border-left: 3px solid var(--cyan-accent);
+            transition: all 0.3s ease;
+        }
+
+        .award-item:hover {
+            transform: translateX(10px);
+            background: white;
+            box-shadow: 0 10px 40px rgba(10, 22, 40, 0.08);
+        }
+
+        .award-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 1rem;
+            color: var(--cyan-accent);
+        }
+
+        .award-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--navy-deep);
+        }
+
+        .award-link {
+            display: inline-block;
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--cyan-accent);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+
+        .award-link:hover {
+            color: var(--navy-deep);
+        }
+
+        /* Interests Section */
+        .interests {
+            background: var(--cream);
+            overflow: hidden;
+        }
+
+        .interests-wrapper {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .interest-tag {
+            padding: 1rem 2rem;
+            background: white;
+            border: 1px solid var(--cream-dark);
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--navy-mid);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .interest-tag:hover {
+            background: var(--navy-deep);
+            color: var(--cream);
+            border-color: var(--navy-deep);
+            transform: translateY(-5px);
+        }
+
+        .interest-tag.highlight {
+            background: var(--cyan-accent);
+            color: var(--navy-deep);
+            border-color: var(--cyan-accent);
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--navy-deep);
+            color: var(--cream);
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .contact-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 3rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: var(--cyan-accent);
+            color: var(--navy-deep);
+            border-color: var(--cyan-accent);
+        }
+
+        .contact-link svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy-deep);
+            padding: 2rem 4rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 4rem 2rem;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 6rem 2rem 4rem;
+                min-height: auto;
+            }
+
+            .hero::before {
+                width: 100%;
+                height: 50%;
+                top: auto;
+                bottom: 0;
+            }
+
+            .hero-content {
+                padding-right: 0;
+                order: 2;
+            }
+
+            .hero-image-container {
+                order: 1;
+                padding: 2rem;
+            }
+
+            .hero-image, .hero-image-frame {
+                width: 280px;
+                height: 350px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-date {
+                position: static;
+                width: auto;
+                text-align: left;
+                margin-bottom: 0.5rem;
+            }
+
+            .timeline-dot {
+                left: -8px;
+            }
+
+            .vision-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-name {
+                font-size: 2.5rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .section-line {
+                display: none;
+            }
+
+            .vision-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="nav-logo">MG</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#vision">VisionForAll</a></li>
+            <li><a href="#awards">Awards</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow animate-in">Garden City, New York</p>
+            <h1 class="hero-name animate-in delay-1">Mihir<br>Goyal</h1>
+            <p class="hero-tagline animate-in delay-2">Aspiring Legal Professional, Advocate & Changemaker</p>
+            <p class="hero-description animate-in delay-3">
+                High school junior with a passion for law, advocacy, and creating meaningful change.
+                Building bridges through service and striving for justice in every endeavor.
+            </p>
+            <a href="#contact" class="hero-cta animate-in delay-4">
+                Get in Touch
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+        <div class="hero-image-container">
+            <img src="MihirG.png" alt="Mihir Goyal" class="hero-image">
+            <div class="hero-image-frame"></div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll to explore</span>
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title">About</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    I'm a junior at Garden City High School, Class of 2027, driven by an unwavering
+                    commitment to law, advocacy, and community service. My journey has taken me from
+                    the courtrooms of Long Island to the classrooms of India, each experience shaping
+                    my understanding of justice and equity.
+                </p>
+                <blockquote class="about-highlight">
+                    "Things laying around as 'spare' or 'old' can make a world of difference
+                    in someone else's life."
+                </blockquote>
+                <p>
+                    With proven abilities in research, logical reasoning, and critical thinking,
+                    I approach every challenge as an opportunity to learn and grow. Whether I'm
+                    indexing legal depositions, leading international advocacy efforts, or teaching
+                    visually impaired children in India, I bring the same dedication and passion
+                    to everything I do.
+                </p>
+            </div>
+            <div class="about-languages">
+                <h3>Languages</h3>
+                <div class="language-item">
+                    <span>English</span>
+                    <span class="language-level">Native</span>
+                </div>
+                <div class="language-item">
+                    <span>Hindi</span>
+                    <span class="language-level">Native</span>
+                </div>
+                <div class="language-item">
+                    <span>Urdu</span>
+                    <span class="language-level">Native</span>
+                </div>
+                <div class="language-item">
+                    <span>Spanish</span>
+                    <span class="language-level">Working</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience" id="experience">
+        <div class="section-header">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Experience</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="timeline-date">Jul 2025 — Present</span>
+                <div class="timeline-dot"></div>
+                <h3 class="timeline-role">Legal Intern</h3>
+                <p class="timeline-company">
+                    Schwartz, Conroy & Hack, PC
+                    <span class="timeline-location">• Garden City, NY</span>
+                </p>
+                <ul class="timeline-description">
+                    <li>Indexed depositions of witnesses, plaintiffs, and defendants for civil case trials regarding insurance, medical malpractice, and property law</li>
+                    <li>Collated documents for account reconciliation, bank records, payroll deposits, and invoices</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-date">Aug 2025 — Present</span>
+                <div class="timeline-dot"></div>
+                <h3 class="timeline-role">Team Lead & Point of Contact</h3>
+                <p class="timeline-company">
+                    International Advocacy Internship
+                    <span class="timeline-location">• Washington, DC</span>
+                </p>
+                <p class="timeline-description">
+                    Leading advocacy initiatives and serving as the primary liaison for international policy discussions.
+                </p>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-date">Summer 2025</span>
+                <div class="timeline-dot"></div>
+                <h3 class="timeline-role">Criminal Law & Trial Intern</h3>
+                <p class="timeline-company">
+                    Leadership Initiatives × Harden Law PLLC
+                    <span class="timeline-location">• Washington, DC</span>
+                </p>
+                <ul class="timeline-description">
+                    <li>Interned with Harden Law PLLC on a life-changing criminal defense case under mentorship of Brandi Harden</li>
+                    <li>Collaborated with attorneys and law professors to prepare expert witness and client for trial</li>
+                    <li>Advocated on Capitol Hill to lawmakers and congressional officials for criminal justice reform</li>
+                    <li>Conducted legal research on motions, affidavits, grand jury testimonies, and discovery materials</li>
+                    <li>Performed direct and cross-examinations to prepare witnesses for upcoming trial</li>
+                </ul>
+                <a href="https://li2025.org/criminal_law_2025/Mihir_Goyal" target="_blank" class="timeline-link">
+                    View Full Profile
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                </a>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-date">Sep 2024 — Feb 2025</span>
+                <div class="timeline-dot"></div>
+                <h3 class="timeline-role">Student</h3>
+                <p class="timeline-company">
+                    NYU High School Law Institute
+                    <span class="timeline-location">• New York, NY</span>
+                </p>
+                <p class="timeline-description">
+                    Participated in weekly academic programming in constitutional law, criminal law, and speech and debate.
+                </p>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-date">Jul 2024</span>
+                <div class="timeline-dot"></div>
+                <h3 class="timeline-role">Volunteer Teacher</h3>
+                <p class="timeline-company">
+                    Sharp Memorial School For The Blind
+                    <span class="timeline-location">• Dehradun, India</span>
+                </p>
+                <ul class="timeline-description">
+                    <li>Assisted in teaching K-8 students various subjects including mathematics, English, geography, and environmental studies</li>
+                    <li>Prepared learning materials for classroom display</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-date">Ongoing</span>
+                <div class="timeline-dot"></div>
+                <h3 class="timeline-role">Student Ambassador</h3>
+                <p class="timeline-company">
+                    GC Estates POA
+                    <span class="timeline-location">• Garden City, NY</span>
+                </p>
+                <p class="timeline-description">
+                    Representing student interests and facilitating community engagement initiatives.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="vision-section" id="vision">
+        <div class="vision-content">
+            <div class="vision-text">
+                <h2>Vision<span>For</span>All</h2>
+                <p>
+                    A youth-led initiative I founded to connect Long Island students with visually impaired
+                    children at Sharp Memorial School for the Blind in Rajpur, India. What started as a
+                    teaching trip transformed into a mission to bridge educational inequity across continents.
+                </p>
+                <p>
+                    We collect and deliver educational supplies, ensuring that students who lack basic
+                    resources receive the tools they need to learn and thrive.
+                </p>
+                <a href="https://mihirgoyal-gc.github.io/visionforall" target="_blank" class="vision-link">
+                    Explore the Project
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+            <div class="vision-stats">
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Backpacks Delivered</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Students Helped</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2+</div>
+                    <div class="stat-label">Years of Service</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">35</div>
+                    <div class="stat-label">Service Hours</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="awards" id="awards">
+        <div class="section-header">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Awards & Honors</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="awards-grid">
+            <div class="award-item">
+                <svg class="award-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+                <h3 class="award-title">President's Volunteer Service Award — Gold Medal</h3>
+            </div>
+            <div class="award-item">
+                <svg class="award-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                </svg>
+                <h3 class="award-title">National Spanish Exam Medalist</h3>
+            </div>
+            <div class="award-item">
+                <svg class="award-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <h3 class="award-title">Debate Awards</h3>
+            </div>
+            <div class="award-item">
+                <svg class="award-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                <h3 class="award-title">Long Island Math Fair Bronze Medal</h3>
+            </div>
+            <div class="award-item">
+                <svg class="award-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                <h3 class="award-title">AP Scholar</h3>
+            </div>
+            <div class="award-item">
+                <svg class="award-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
+                <h3 class="award-title">LI Change Certificate of Achievement — Criminal Law Program</h3>
+                <a href="https://drive.google.com/file/d/14fbMvs7r_EC_kblLPq_wUfO_qmD8njSQ/view" target="_blank" class="award-link">View Certificate</a>
+            </div>
+            <div class="award-item">
+                <svg class="award-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 class="award-title">35 Verified Service Hours — LI Change</h3>
+                <a href="https://drive.google.com/file/d/1rjoYWxPX9LJpUPmMcJtX9O1uTsnzl62L/view" target="_blank" class="award-link">View Verification</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="interests" id="interests">
+        <div class="section-header">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Interests & Passions</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="interests-wrapper">
+            <span class="interest-tag highlight">Saxophone</span>
+            <span class="interest-tag">Debate</span>
+            <span class="interest-tag">Model UN</span>
+            <span class="interest-tag highlight">Chess</span>
+            <span class="interest-tag">Fitness</span>
+            <span class="interest-tag">Politics</span>
+            <span class="interest-tag highlight">Cooking & Grilling</span>
+            <span class="interest-tag">Travel</span>
+            <span class="interest-tag">Cultural Studies</span>
+            <span class="interest-tag">Geography</span>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Let's Connect</h2>
+        <p class="contact-subtitle">Open to opportunities, collaborations, and conversations</p>
+        <div class="contact-links">
+            <a href="mailto:mihir.goyal01@gmail.com" class="contact-link">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                Email
+            </a>
+            <a href="https://linkedin.com/in/mihir-goyal" target="_blank" class="contact-link">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                LinkedIn
+            </a>
+            <a href="https://mihirgoyal-gc.github.io/visionforall" target="_blank" class="contact-link">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                VisionForAll
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Mihir Goyal. Crafted with purpose.</p>
+    </footer>
+
+    <script>
+        // Smooth reveal animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-item, .award-item, .stat-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Nav background on scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(248, 250, 252, 0.95)';
+            } else {
+                nav.style.background = 'rgba(248, 250, 252, 0.8)';
+            }
+        });
+    </script>
+</body>
+</html>
