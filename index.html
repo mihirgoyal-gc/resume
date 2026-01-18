@@ -62,6 +62,7 @@
             color: var(--navy-deep);
             text-decoration: none;
             letter-spacing: -0.02em;
+            z-index: 102;
         }
 
         .nav-links {
@@ -78,10 +79,123 @@
             text-transform: uppercase;
             letter-spacing: 0.1em;
             transition: color 0.3s ease;
+            padding: 0.5rem 0;
         }
 
         .nav-links a:hover {
             color: var(--navy-deep);
+        }
+
+        /* Mobile Menu Toggle */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 102;
+            padding: 0;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--navy-deep);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-toggle span::before,
+        .nav-toggle span::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background: var(--navy-deep);
+            transition: all 0.3s ease;
+        }
+
+        .nav-toggle span::before {
+            top: -8px;
+        }
+
+        .nav-toggle span::after {
+            top: 8px;
+        }
+
+        .nav-toggle.active span {
+            background: transparent;
+        }
+
+        .nav-toggle.active span::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+
+        .nav-toggle.active span::after {
+            top: 0;
+            transform: rotate(-45deg);
+        }
+
+        /* Mobile Menu Overlay */
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(248, 250, 252, 0.98);
+            z-index: 101;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-overlay .nav-links {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            gap: 0;
+        }
+
+        .nav-overlay .nav-links li {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-overlay.active .nav-links li {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-overlay.active .nav-links li:nth-child(1) { transition-delay: 0.1s; }
+        .nav-overlay.active .nav-links li:nth-child(2) { transition-delay: 0.15s; }
+        .nav-overlay.active .nav-links li:nth-child(3) { transition-delay: 0.2s; }
+        .nav-overlay.active .nav-links li:nth-child(4) { transition-delay: 0.25s; }
+        .nav-overlay.active .nav-links li:nth-child(5) { transition-delay: 0.3s; }
+
+        .nav-overlay .nav-links a {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            padding: 1rem 2rem;
+            display: block;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
         }
 
         /* Hero Section */
@@ -728,23 +842,31 @@
         .delay-3 { animation-delay: 0.3s; }
         .delay-4 { animation-delay: 0.4s; }
 
-        /* Responsive */
+        /* Responsive - Tablet */
         @media (max-width: 1024px) {
             nav {
-                padding: 1rem 2rem;
+                padding: 1rem 1.5rem;
             }
 
-            .nav-links {
+            nav > .nav-links {
                 display: none;
             }
 
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-overlay {
+                display: block;
+            }
+
             section {
-                padding: 4rem 2rem;
+                padding: 4rem 1.5rem;
             }
 
             .hero {
                 grid-template-columns: 1fr;
-                padding: 6rem 2rem 4rem;
+                padding: 6rem 1.5rem 4rem;
                 min-height: auto;
             }
 
@@ -770,13 +892,22 @@
                 height: 350px;
             }
 
+            .hero-scroll {
+                display: none;
+            }
+
             .about-grid {
                 grid-template-columns: 1fr;
-                gap: 3rem;
+                gap: 2rem;
+            }
+
+            .about-highlight {
+                font-size: 1.5rem;
+                padding-left: 1.5rem;
             }
 
             .timeline {
-                padding-left: 2rem;
+                padding-left: 1.5rem;
             }
 
             .timeline::before {
@@ -788,39 +919,308 @@
                 width: auto;
                 text-align: left;
                 margin-bottom: 0.5rem;
+                color: var(--cyan-accent);
+                font-weight: 600;
+            }
+
+            .timeline-item {
+                padding: 1.5rem 0 2rem 1.5rem;
             }
 
             .timeline-dot {
-                left: -8px;
+                left: -6px;
+                width: 12px;
+                height: 12px;
+            }
+
+            .timeline-role {
+                font-size: 1.5rem;
             }
 
             .vision-content {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
+
+            .vision-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .stat-item {
+                padding: 1.5rem 1rem;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+
+            footer {
+                padding: 2rem 1.5rem;
+            }
         }
 
+        /* Responsive - Mobile */
         @media (max-width: 640px) {
+            nav {
+                padding: 0.75rem 1rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .hero {
+                padding: 5rem 1rem 3rem;
+            }
+
+            .hero-eyebrow {
+                font-size: 0.7rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-eyebrow::before {
+                width: 24px;
+            }
+
             .hero-name {
                 font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.15rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .hero-cta {
+                padding: 1rem 1.5rem;
+                font-size: 0.8rem;
+                min-height: 48px;
+            }
+
+            .hero-image-container {
+                padding: 1rem;
+            }
+
+            .hero-image, .hero-image-frame {
+                width: 220px;
+                height: 280px;
+            }
+
+            .hero-image-frame {
+                top: calc(50% + 12px);
+                left: calc(50% + 12px);
             }
 
             .section-header {
                 flex-direction: column;
                 gap: 0.5rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .section-number {
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
             }
 
             .section-line {
                 display: none;
             }
 
+            .about-text {
+                font-size: 1.05rem;
+                line-height: 1.8;
+            }
+
+            .about-highlight {
+                font-size: 1.25rem;
+                padding-left: 1rem;
+                margin: 1.5rem 0;
+            }
+
+            .about-languages {
+                padding: 1.5rem;
+            }
+
+            .language-item {
+                padding: 1rem 0;
+                min-height: 44px;
+            }
+
+            .timeline {
+                padding-left: 1rem;
+            }
+
+            .timeline-item {
+                padding: 1rem 0 1.5rem 1rem;
+            }
+
+            .timeline-role {
+                font-size: 1.25rem;
+                line-height: 1.3;
+            }
+
+            .timeline-company {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+            }
+
+            .timeline-description {
+                font-size: 0.9rem;
+            }
+
+            .timeline-description li {
+                margin-bottom: 0.75rem;
+                line-height: 1.6;
+            }
+
+            .timeline-link {
+                min-height: 44px;
+                padding: 0.75rem 1.25rem;
+            }
+
+            .vision-text h2 {
+                font-size: 2.5rem;
+            }
+
+            .vision-text p {
+                font-size: 1rem;
+            }
+
+            .vision-link {
+                min-height: 44px;
+                padding: 0.5rem 0;
+            }
+
             .vision-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.75rem;
+            }
+
+            .stat-item {
+                padding: 1.25rem 0.75rem;
+            }
+
+            .stat-number {
+                font-size: 2.25rem;
+            }
+
+            .stat-label {
+                font-size: 0.7rem;
+                letter-spacing: 0.1em;
+            }
+
+            .awards-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .award-item {
+                padding: 1.5rem;
+            }
+
+            .award-item:hover {
+                transform: none;
+            }
+
+            .award-title {
+                font-size: 1.1rem;
+            }
+
+            .award-link {
+                min-height: 44px;
+                padding: 0.5rem 0;
+                display: inline-flex;
+                align-items: center;
+            }
+
+            .interests-wrapper {
+                gap: 0.75rem;
+            }
+
+            .interest-tag {
+                padding: 0.75rem 1.25rem;
+                font-size: 1rem;
+                min-height: 44px;
+            }
+
+            .interest-tag:hover {
+                transform: none;
+            }
+
+            .contact h2 {
+                font-size: 2rem;
+            }
+
+            .contact-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
             }
 
             .contact-links {
                 flex-direction: column;
-                align-items: center;
+                align-items: stretch;
+                gap: 1rem;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .contact-link {
+                justify-content: center;
+                min-height: 48px;
+                padding: 1rem 1.5rem;
+            }
+
+            footer {
+                padding: 1.5rem 1rem;
+            }
+
+            footer p {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 375px) {
+            .hero-name {
+                font-size: 2rem;
+            }
+
+            .hero-image, .hero-image-frame {
+                width: 180px;
+                height: 230px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .vision-text h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .award-item:hover,
+            .interest-tag:hover {
+                transform: none;
+                background: inherit;
+            }
+
+            .interest-tag.highlight:hover {
+                background: var(--cyan-accent);
             }
         }
     </style>
@@ -835,7 +1235,21 @@
             <li><a href="#awards">Awards</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <button class="nav-toggle" aria-label="Toggle navigation menu">
+            <span></span>
+        </button>
     </nav>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="nav-overlay">
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#vision">VisionForAll</a></li>
+            <li><a href="#awards">Awards</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
 
     <section class="hero">
         <div class="hero-content">
@@ -927,8 +1341,10 @@
                     <span class="timeline-location">• Garden City, NY</span>
                 </p>
                 <ul class="timeline-description">
-                    <li>Indexed depositions of witnesses, plaintiffs, and defendants for civil case trials regarding insurance, medical malpractice, and property law</li>
-                    <li>Collated documents for account reconciliation, bank records, payroll deposits, and invoices</li>
+                    <li>Index depositions of witnesses, plaintiffs, and defendants for civil case trials involving insurance disputes, medical malpractice claims, and property law matters</li>
+                    <li>Analyze case documents to identify key testimonies and flag inconsistencies for attorney review</li>
+                    <li>Collate and organize financial documents including bank records, payroll deposits, and invoices for account reconciliation</li>
+                    <li>Gain hands-on exposure to civil litigation procedures and legal document management</li>
                 </ul>
             </div>
             <div class="timeline-item">
@@ -936,12 +1352,14 @@
                 <div class="timeline-dot"></div>
                 <h3 class="timeline-role">Team Lead & Point of Contact</h3>
                 <p class="timeline-company">
-                    International Advocacy Internship
+                    Leadership Initiatives — International Advocacy Internship
                     <span class="timeline-location">• Washington, DC</span>
                 </p>
-                <p class="timeline-description">
-                    Leading advocacy initiatives and serving as the primary liaison for international policy discussions.
-                </p>
+                <ul class="timeline-description">
+                    <li>Lead a team of interns in developing policy briefs and advocacy strategies for international issues</li>
+                    <li>Serve as primary liaison between the team and organizational leadership</li>
+                    <li>Coordinate meetings, delegate responsibilities, and ensure project deliverables are met on schedule</li>
+                </ul>
             </div>
             <div class="timeline-item">
                 <span class="timeline-date">Summer 2025</span>
@@ -968,14 +1386,17 @@
             <div class="timeline-item">
                 <span class="timeline-date">Sep 2024 — Feb 2025</span>
                 <div class="timeline-dot"></div>
-                <h3 class="timeline-role">Student</h3>
+                <h3 class="timeline-role">Law Institute Student</h3>
                 <p class="timeline-company">
                     NYU High School Law Institute
                     <span class="timeline-location">• New York, NY</span>
                 </p>
-                <p class="timeline-description">
-                    Participated in weekly academic programming in constitutional law, criminal law, and speech and debate.
-                </p>
+                <ul class="timeline-description">
+                    <li>Completed rigorous weekly programming in constitutional law, examining landmark Supreme Court cases and their modern implications</li>
+                    <li>Studied criminal law principles including due process, Fourth Amendment protections, and criminal procedure</li>
+                    <li>Developed speech and debate skills through structured argumentation exercises and mock trial simulations</li>
+                    <li>Engaged with NYU Law faculty and practicing attorneys in interactive seminars</li>
+                </ul>
             </div>
             <div class="timeline-item">
                 <span class="timeline-date">Jul 2024</span>
@@ -1151,6 +1572,34 @@
     </footer>
 
     <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navOverlay = document.querySelector('.nav-overlay');
+        const navOverlayLinks = navOverlay.querySelectorAll('a');
+
+        function toggleMenu() {
+            navToggle.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = navOverlay.classList.contains('active') ? 'hidden' : '';
+        }
+
+        navToggle.addEventListener('click', toggleMenu);
+
+        navOverlayLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navOverlay.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+
         // Smooth reveal animations on scroll
         const observerOptions = {
             threshold: 0.1,

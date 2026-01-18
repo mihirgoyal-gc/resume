@@ -12,7 +12,14 @@
       "Bash(git init:*)",
       "Bash(gh repo create:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh repo edit:*)",
+      "Bash(gh api:*)",
+      "Bash(ls:*)",
+      "Bash(git mv:*)",
+      "Bash(dig:*)",
+      "Bash(curl:*)"
     ]
   }
 }
