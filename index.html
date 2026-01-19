@@ -745,6 +745,172 @@
             color: var(--navy-deep);
         }
 
+        .award-issuer {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .award-date {
+            font-size: 0.8rem;
+            color: var(--cyan-accent);
+            font-weight: 500;
+            margin-top: 0.25rem;
+        }
+
+        .award-description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .award-details {
+            font-size: 0.85rem;
+            color: var(--navy-mid);
+            margin-top: 0.5rem;
+            line-height: 1.7;
+        }
+
+        .award-details li {
+            margin-bottom: 0.35rem;
+            margin-left: 1rem;
+        }
+
+        .award-association {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(100, 150, 180, 0.15);
+        }
+
+        .award-association-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            object-fit: contain;
+        }
+
+        .award-association-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .debate-images {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .debate-image-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .debate-image-item img {
+            width: 120px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid rgba(100, 150, 180, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .debate-image-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .debate-image-date {
+            font-size: 0.75rem;
+            color: var(--cyan-accent);
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Image Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 85vh;
+            animation: modalZoom 0.3s ease;
+        }
+
+        @keyframes modalZoom {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: var(--cream);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--cyan-accent);
+            transform: scale(1.1);
+        }
+
+        .modal-caption {
+            text-align: center;
+            color: var(--cream);
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 640px) {
+            .debate-image-item img {
+                width: 100px;
+                height: 75px;
+            }
+        }
+
         /* Test Scores Section */
         .scores {
             background: var(--cream);
@@ -1620,33 +1786,78 @@
         <div class="awards-grid">
             <div class="award-item">
                 <svg class="award-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
-                <h3 class="award-title">President's Volunteer Service Award — Gold Medal</h3>
-            </div>
-            <div class="award-item">
-                <svg class="award-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-                </svg>
-                <h3 class="award-title">National Spanish Exam Medalist</h3>
-            </div>
-            <div class="award-item">
-                <svg class="award-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                </svg>
-                <h3 class="award-title">Debate Awards</h3>
+                <h3 class="award-title">AP Scholar</h3>
+                <div class="award-issuer">Issued by College Board</div>
+                <div class="award-date">Jul 2025</div>
+                <p class="award-description">Granted to students who receive scores of 3 or higher on three or more AP Exams.</p>
+                <div class="award-association">
+                    <img src="garden_city_high_school_35_logo.jpeg" alt="Garden City High School" class="award-association-logo">
+                    <span class="award-association-text">Associated with Garden City High School</span>
+                </div>
             </div>
             <div class="award-item">
                 <svg class="award-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                 </svg>
                 <h3 class="award-title">Long Island Math Fair Bronze Medal</h3>
+                <div class="award-issuer">Issued by The Association of Math Supervisors of Long Island</div>
+                <div class="award-date">Mar 2025</div>
+                <div class="award-association">
+                    <img src="garden_city_high_school_35_logo.jpeg" alt="Garden City High School" class="award-association-logo">
+                    <span class="award-association-text">Associated with Garden City High School</span>
+                </div>
             </div>
             <div class="award-item">
                 <svg class="award-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                 </svg>
-                <h3 class="award-title">AP Scholar</h3>
+                <h3 class="award-title">President's Volunteer Service Award — Gold Medal</h3>
+                <div class="award-date">Feb 2024</div>
+                <p class="award-description">Recognized for 100+ hours of volunteer work dedicated to community service initiatives.</p>
+                <a href="https://www.gcnews.com/articles/livc-hosts-presidents-volunteer-service-awards" target="_blank" class="award-link">Read News Article</a>
+                <div class="award-association">
+                    <img src="garden_city_high_school_35_logo.jpeg" alt="Garden City High School" class="award-association-logo">
+                    <span class="award-association-text">Associated with Garden City High School</span>
+                </div>
+            </div>
+            <div class="award-item">
+                <svg class="award-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <h3 class="award-title">Debate Awards</h3>
+                <div class="award-issuer">Issued by Long Island Forensics Association (LIFA)</div>
+                <ul class="award-details">
+                    <li><strong>Feb 2025:</strong> 2nd place out of 16 teams — Full qualification for NY State debate tournament</li>
+                    <li><strong>Sep 2025:</strong> 8th place out of 42 teams — Half qualification for NY State debate tournament</li>
+                </ul>
+                <div class="debate-images">
+                    <div class="debate-image-item">
+                        <img src="debate-02082025.jpeg" alt="Debate Tournament February 2025">
+                        <span class="debate-image-date">02/08/25</span>
+                    </div>
+                    <div class="debate-image-item">
+                        <img src="debate-09272025.jpeg" alt="Debate Tournament September 2025">
+                        <span class="debate-image-date">09/27/25</span>
+                    </div>
+                </div>
+                <div class="award-association">
+                    <img src="garden_city_high_school_35_logo.jpeg" alt="Garden City High School" class="award-association-logo">
+                    <span class="award-association-text">Associated with Garden City High School</span>
+                </div>
+            </div>
+            <div class="award-item">
+                <svg class="award-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                </svg>
+                <h3 class="award-title">National Spanish Exam Medalist</h3>
+                <div class="award-issuer">Issued by American Association of Teachers of Spanish and Portuguese (AATSP)</div>
+                <p class="award-description">2× Silver Medal (2023, 2024) · 1× Bronze Medal (2025)</p>
+                <div class="award-association">
+                    <img src="garden_city_high_school_35_logo.jpeg" alt="Garden City High School" class="award-association-logo">
+                    <span class="award-association-text">Associated with Garden City High School</span>
+                </div>
             </div>
             <div class="award-item">
                 <svg class="award-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1779,6 +1990,15 @@
         <p>© 2025 Mihir Goyal. Crafted with purpose.</p>
     </footer>
 
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <img id="modalImage" src="" alt="">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
     <script>
         // Mobile Navigation Toggle
         const navToggle = document.querySelector('.nav-toggle');
@@ -1837,6 +2057,38 @@
                 nav.style.background = 'rgba(248, 250, 252, 0.95)';
             } else {
                 nav.style.background = 'rgba(248, 250, 252, 0.8)';
+            }
+        });
+
+        // Image Modal
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+        const modalClose = document.querySelector('.modal-close');
+
+        document.querySelectorAll('.debate-image-item img').forEach(img => {
+            img.addEventListener('click', function() {
+                modal.classList.add('active');
+                modalImg.src = this.src;
+                modalCaption.textContent = this.alt;
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
             }
         });
     </script>
