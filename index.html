@@ -745,6 +745,85 @@
             color: var(--navy-deep);
         }
 
+        /* Test Scores Section */
+        .scores {
+            background: var(--cream);
+        }
+
+        .scores-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .score-category {
+            margin-bottom: 2rem;
+        }
+
+        .score-category-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--navy-deep);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--cyan-accent);
+        }
+
+        .score-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .score-item:last-child {
+            border-bottom: none;
+        }
+
+        .score-name {
+            font-weight: 500;
+            color: var(--navy-deep);
+            font-size: 1rem;
+        }
+
+        .score-details {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .score-value {
+            text-align: right;
+        }
+
+        .score-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--cyan-accent);
+            line-height: 1;
+        }
+
+        .score-breakdown {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .score-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background: var(--cyan-accent);
+            color: var(--navy-deep);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
+        }
+
         /* Interests Section */
         .interests {
             background: var(--cream);
@@ -1177,6 +1256,19 @@
                 gap: 1rem;
             }
 
+            .scores-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .score-category {
+                margin-bottom: 1rem;
+            }
+
+            .score-number {
+                font-size: 1.75rem;
+            }
+
             .award-item {
                 padding: 1.5rem;
             }
@@ -1573,9 +1665,73 @@
         </div>
     </section>
 
-    <section class="interests" id="interests">
+    <section class="scores" id="scores">
         <div class="section-header">
             <span class="section-number">04</span>
+            <h2 class="section-title">Test Scores</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="scores-grid">
+            <div class="score-category">
+                <h3 class="score-category-title">Standardized Tests</h3>
+                <div class="score-item">
+                    <div class="score-info">
+                        <div class="score-name">SAT</div>
+                        <div class="score-details">October 2025</div>
+                    </div>
+                    <div class="score-value">
+                        <div class="score-number">1520</div>
+                        <div class="score-breakdown">730 English · 790 Math</div>
+                    </div>
+                </div>
+                <div class="score-item">
+                    <div class="score-info">
+                        <div class="score-name">PSAT</div>
+                        <div class="score-details">October 2025</div>
+                    </div>
+                    <div class="score-value">
+                        <div class="score-number">1460</div>
+                        <div class="score-breakdown">700 English · 760 Math</div>
+                    </div>
+                </div>
+            </div>
+            <div class="score-category">
+                <h3 class="score-category-title">AP Exams</h3>
+                <div class="score-item">
+                    <div class="score-info">
+                        <div class="score-name">AP Human Geography</div>
+                        <div class="score-details">May 2024</div>
+                    </div>
+                    <div class="score-value">
+                        <div class="score-number">5</div>
+                    </div>
+                </div>
+                <div class="score-item">
+                    <div class="score-info">
+                        <div class="score-name">AP World History</div>
+                        <div class="score-details">May 2025</div>
+                    </div>
+                    <div class="score-value">
+                        <div class="score-number">4</div>
+                    </div>
+                </div>
+                <div class="score-item">
+                    <div class="score-info">
+                        <div class="score-name">AP Environmental Science</div>
+                        <div class="score-details">May 2025</div>
+                        <span class="score-badge">Self-Studied</span>
+                    </div>
+                    <div class="score-value">
+                        <div class="score-number">4</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="interests" id="interests">
+        <div class="section-header">
+            <span class="section-number">05</span>
             <h2 class="section-title">Interests & Passions</h2>
             <div class="section-line"></div>
         </div>

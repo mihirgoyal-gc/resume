@@ -19,7 +19,8 @@
       "Bash(ls:*)",
       "Bash(git mv:*)",
       "Bash(dig:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(gh auth:*)"
     ]
   }
 }
