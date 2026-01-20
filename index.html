@@ -212,6 +212,7 @@
         .nav-overlay.active .nav-links li:nth-child(3) { transition-delay: 0.2s; }
         .nav-overlay.active .nav-links li:nth-child(4) { transition-delay: 0.25s; }
         .nav-overlay.active .nav-links li:nth-child(5) { transition-delay: 0.3s; }
+        .nav-overlay.active .nav-links li:nth-child(6) { transition-delay: 0.35s; }
 
         .nav-overlay .nav-links a {
             font-family: var(--font-display);
@@ -990,6 +991,169 @@
             margin-top: 0.25rem;
         }
 
+        /* Publications Section */
+        .publications {
+            padding: 6rem 8%;
+            background: linear-gradient(135deg, var(--slate-light) 0%, var(--cream) 100%);
+        }
+
+        .book-card {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2.5rem;
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .book-images {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .book-cover {
+            width: 160px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .book-cover:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-cover.back {
+            width: 140px;
+        }
+
+        .book-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .book-title {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            color: var(--navy-deep);
+            margin-bottom: 0.25rem;
+        }
+
+        .book-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .book-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .book-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .book-meta-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+        }
+
+        .book-meta-value {
+            font-size: 0.9rem;
+            color: var(--navy-mid);
+            font-weight: 500;
+        }
+
+        .book-description {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--navy-mid);
+            margin-bottom: 1.25rem;
+        }
+
+        .book-links {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .book-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            background: var(--navy-deep);
+            color: var(--cream);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .book-link:hover {
+            background: var(--cyan-accent);
+            color: var(--navy-deep);
+            transform: translateY(-2px);
+        }
+
+        .book-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .book-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .book-images {
+                justify-content: center;
+            }
+
+            .book-cover {
+                width: 130px;
+            }
+
+            .book-cover.back {
+                width: 110px;
+            }
+
+            .book-meta {
+                justify-content: center;
+            }
+
+            .book-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .book-images {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .book-cover, .book-cover.back {
+                width: 150px;
+            }
+        }
+
         /* Interests Section */
         .interests {
             background: var(--cream);
@@ -1543,6 +1707,7 @@
             <li><a href="#experience">Experience</a></li>
             <li><a href="#vision">VisionForAll</a></li>
             <li><a href="#awards">Awards</a></li>
+            <li><a href="#publications">Publications</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
         <button class="nav-toggle" aria-label="Toggle navigation menu">
@@ -1557,6 +1722,7 @@
             <li><a href="#experience">Experience</a></li>
             <li><a href="#vision">VisionForAll</a></li>
             <li><a href="#awards">Awards</a></li>
+            <li><a href="#publications">Publications</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </div>
@@ -1940,9 +2106,60 @@
         </div>
     </section>
 
-    <section class="interests" id="interests">
+    <section class="publications" id="publications">
         <div class="section-header">
             <span class="section-number">05</span>
+            <h2 class="section-title">Publications</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="book-card">
+            <div class="book-images">
+                <img src="ek-aur-sapana-cover.jpeg" alt="Ek Aur Sapana - Front Cover" class="book-cover front">
+                <img src="ek-aur-sapana-back.jpeg" alt="Ek Aur Sapana - Back Cover" class="book-cover back">
+            </div>
+            <div class="book-details">
+                <h3 class="book-title">Ek Aur Sapana</h3>
+                <p class="book-subtitle">"Another Dream"</p>
+                <div class="book-meta">
+                    <div class="book-meta-item">
+                        <span class="book-meta-label">Author</span>
+                        <span class="book-meta-value">Mihir Goyal</span>
+                    </div>
+                    <div class="book-meta-item">
+                        <span class="book-meta-label">Editor</span>
+                        <span class="book-meta-value">Lamiya Sulemanji</span>
+                    </div>
+                    <div class="book-meta-item">
+                        <span class="book-meta-label">Published</span>
+                        <span class="book-meta-value">2020</span>
+                    </div>
+                    <div class="book-meta-item">
+                        <span class="book-meta-label">Pages</span>
+                        <span class="book-meta-value">122</span>
+                    </div>
+                </div>
+                <p class="book-description">An inspirational story of the struggle of four diverse friends raised from Hindu, Muslim, Sikh, and Christian families who go to the moon and back for their dream — for the whole of India to hear their music.</p>
+                <div class="book-links">
+                    <a href="https://books.google.com/books/about/Ek_Aur_Sapana.html?id=eCKczQEACAAJ" target="_blank" class="book-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                        Google Books
+                    </a>
+                    <a href="https://www.amazon.ae/Ek-Aur-Sapana-Lamiya-Sulemanji/dp/B08CJSK5FF" target="_blank" class="book-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        Amazon
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="interests" id="interests">
+        <div class="section-header">
+            <span class="section-number">06</span>
             <h2 class="section-title">Interests & Passions</h2>
             <div class="section-line"></div>
         </div>
@@ -2066,7 +2283,7 @@
         const modalCaption = document.getElementById('modalCaption');
         const modalClose = document.querySelector('.modal-close');
 
-        document.querySelectorAll('.debate-image-item img').forEach(img => {
+        document.querySelectorAll('.debate-image-item img, .book-cover').forEach(img => {
             img.addEventListener('click', function() {
                 modal.classList.add('active');
                 modalImg.src = this.src;
